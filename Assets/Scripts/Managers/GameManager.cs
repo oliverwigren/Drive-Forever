@@ -8,27 +8,31 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     [Header("Menus")]
-    public GameObject GameOverMenu;
-    public GameObject PauseMenu;
-    public GameObject StartMenu;
-    public GameObject GameMenu;
+    [SerializeField] private GameObject GameOverMenu;
+    [SerializeField] private GameObject PauseMenu;
+    [SerializeField] private GameObject StartMenu;
+    [SerializeField] private GameObject GameMenu;
 
     public GameObject Spawner;
 
-    [Header("Bools")]
-    public bool isPaused;
-    public bool isStarted;
+    //[Header("Bools")]
+    public bool isPaused  { get; private set; }
+    public bool isStarted { get; private set; }
     [HideInInspector] public bool isDead;
 
-    public int score;
+    [HideInInspector] public int score;
+    private int highScore;
 
     [SerializeField] TMP_Text scoreText;
+    [SerializeField] TMP_Text finalScoreText;
+    [SerializeField] TMP_Text highScoreText;
 
     private void Start()
     {
         Cursor.visible = false;
 
         StartMenu.SetActive(true);
+
     }
 
     private void Update()
@@ -56,11 +60,19 @@ public class GameManager : MonoBehaviour
     public void Retry()
     {
         Debug.Log("Retry");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene("Game");
     }
 
     public void GameOver()
     {
+        finalScoreText.text = score.ToString();
+        if (score > highScore)
+        {
+            highScore = score;
+        }
+        highScoreText.text = highScore.ToString();
+
         isDead = true;
         Time.timeScale = 0.0f;
         GameOverMenu.SetActive(true);

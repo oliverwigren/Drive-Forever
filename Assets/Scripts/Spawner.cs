@@ -25,10 +25,25 @@ public class Spawner : MonoBehaviour
 
     bool isStarted;
 
+    public float k;
+
     // Start is called before the first frame update
     void Start()
     {
+        startTimeBtwSpawns *= k;
         TimeBtwSpawns = startTimeBtwSpawns;
+    }
+    private void Update()
+    {
+        if (TimeBtwSpawns < 0)
+        {
+            Spawn();
+            TimeBtwSpawns = startTimeBtwSpawns;
+        }
+        else
+        {
+            TimeBtwSpawns -= Time.deltaTime;
+        }
     }
 
     // Update is called once per frame
@@ -72,30 +87,30 @@ public class Spawner : MonoBehaviour
 
     private void OnEnable()
     {
-        InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
+        //InvokeRepeating(nameof(Spawn), spawnRate, spawnRate);
     }
     private void OnDisable()
     {
-        CancelInvoke(nameof(Spawn));
+       // CancelInvoke(nameof(Spawn));
     }
 
     void Spawn()
     {
-        if(startTimeBtwSpawns > 0.4f)
+        if(startTimeBtwSpawns > 0.55f)
         {
             Debug.Log("Easy");
             GameObject obstacle = Instantiate(easyPatterns[Random.Range(0, easyPatterns.Length)], new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
             obstacle.transform.position += Vector3.left * Random.Range(minHeight, maxHeight);
             gameManager.GetComponent<GameManager>().AddScore(50);
         }
-        if (startTimeBtwSpawns <= 0.4f && startTimeBtwSpawns > 0.3f)
+        if (startTimeBtwSpawns <= 0.55f && startTimeBtwSpawns > 0.45f)
         {
             Debug.Log("Medium");
             GameObject obstacle = Instantiate(mediumPatterns[Random.Range(0, mediumPatterns.Length)], new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
             obstacle.transform.position += Vector3.left * Random.Range(minHeight, maxHeight);
             gameManager.GetComponent<GameManager>().AddScore(100);
         }
-        if (startTimeBtwSpawns <= 0.3f /*&& startTimeBtwSpawns > 0.6f*/)
+        if (startTimeBtwSpawns <= 0.45f /*&& startTimeBtwSpawns > 0.6f*/)
         {
             Debug.Log("Hard");
             GameObject obstacle = Instantiate(hardPatterns[Random.Range(0, hardPatterns.Length)], new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
