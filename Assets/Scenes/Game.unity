@@ -482,7 +482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &480759807
 RectTransform:
   m_ObjectHideFlags: 0
@@ -893,7 +893,6 @@ MonoBehaviour:
   GameMenu: {fileID: 506550325}
   Spawner: {fileID: 1378283597}
   isDead: 0
-  score: 0
   scoreText: {fileID: 715356356}
   finalScoreText: {fileID: 467236070}
   highScoreText: {fileID: 1010105233}
@@ -2119,15 +2118,14 @@ MonoBehaviour:
   - {fileID: 6853938451124802741, guid: 51d94975254dd41d9b01ff617bd0986b, type: 3}
   hardPatterns:
   - {fileID: 6853938451124802741, guid: 7b104dde09857470bb06fe2b3b629987, type: 3}
-  startTimeBtwSpawns: 0.6
-  decrease: 1
-  spawnRate: 0.8
+  startTimeBtwSpawns: 0.7
+  decrease: 0.3
   minTime: 0
   minHeight: -0.5
   maxHeight: 2.6
   minSpawn: 0.4
   gameManager: {fileID: 658173340}
-  k: 2.5
+  k: 2.25
 --- !u!1 &1533887739
 GameObject:
   m_ObjectHideFlags: 0

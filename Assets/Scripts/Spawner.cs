@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
     public float startTimeBtwSpawns; //1.5
     private float TimeBtwSpawns; 
     public float decrease; //.02
-    public float spawnRate;
+    //public float spawnRate;
 
     [Header("Regulations")]
     public float minTime;
@@ -96,21 +96,21 @@ public class Spawner : MonoBehaviour
 
     void Spawn()
     {
-        if(startTimeBtwSpawns > 0.55f)
+        if(startTimeBtwSpawns > 0.65f*k)
         {
             Debug.Log("Easy");
             GameObject obstacle = Instantiate(easyPatterns[Random.Range(0, easyPatterns.Length)], new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
             obstacle.transform.position += Vector3.left * Random.Range(minHeight, maxHeight);
             gameManager.GetComponent<GameManager>().AddScore(50);
         }
-        if (startTimeBtwSpawns <= 0.55f && startTimeBtwSpawns > 0.45f)
+        if (startTimeBtwSpawns <= 0.65f*k && startTimeBtwSpawns > 0.50f*k)
         {
             Debug.Log("Medium");
             GameObject obstacle = Instantiate(mediumPatterns[Random.Range(0, mediumPatterns.Length)], new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
             obstacle.transform.position += Vector3.left * Random.Range(minHeight, maxHeight);
             gameManager.GetComponent<GameManager>().AddScore(100);
         }
-        if (startTimeBtwSpawns <= 0.45f /*&& startTimeBtwSpawns > 0.6f*/)
+        if (startTimeBtwSpawns <= 0.50f *k/*&& startTimeBtwSpawns > 0.6f*/)
         {
             Debug.Log("Hard");
             GameObject obstacle = Instantiate(hardPatterns[Random.Range(0, hardPatterns.Length)], new Vector3(transform.position.x, transform.position.y, -1), Quaternion.identity);
@@ -120,6 +120,6 @@ public class Spawner : MonoBehaviour
 
         if (startTimeBtwSpawns > minTime){ startTimeBtwSpawns -= decrease * Time.deltaTime; }
 
-        if (spawnRate > minSpawn){ spawnRate -= decrease * Time.deltaTime; }
+        //if (spawnRate > minSpawn){ spawnRate -= decrease * Time.deltaTime; }
     }
 }

@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public bool isStarted { get; private set; }
     [HideInInspector] public bool isDead;
 
-    [HideInInspector] public int score;
+    private int score = 0;
     private int highScore;
 
     [SerializeField] TMP_Text scoreText;
@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
 
         StartMenu.SetActive(true);
-
     }
 
     private void Update()
@@ -45,10 +44,10 @@ public class GameManager : MonoBehaviour
             Spawner.SetActive(true);
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Pause();
-        }
+        //if (Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    Pause();
+        //}
     }
 
     public void AddScore(int add)
@@ -83,18 +82,18 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        if (isPaused && !isDead)
-        {
-            isPaused = false;
-            PauseMenu.SetActive(false);
-            Time.timeScale = 1f;
-        }
-        else if (!isPaused && !isDead)
-        {
-            isPaused = true;
-            PauseMenu.SetActive(true);
-            Time.timeScale = 0.0f;
-        }
+        //if (isPaused && !isDead)
+        //{
+        //    isPaused = false;
+        //    PauseMenu.SetActive(false);
+        //    Time.timeScale = 1f;
+        //}
+        //else if (!isPaused && !isDead)
+        //{
+        //    isPaused = true;
+        //    PauseMenu.SetActive(true);
+        //    Time.timeScale = 0.0f;
+        //}
        
     }
     
