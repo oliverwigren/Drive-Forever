@@ -2118,14 +2118,13 @@ MonoBehaviour:
   - {fileID: 6853938451124802741, guid: 51d94975254dd41d9b01ff617bd0986b, type: 3}
   hardPatterns:
   - {fileID: 6853938451124802741, guid: 7b104dde09857470bb06fe2b3b629987, type: 3}
-  startTimeBtwSpawns: 0.7
-  decrease: 0.3
-  minTime: 0
+  startTimeBtwSpawns: 1
+  decrease: 1
+  minTime: 0.5
   minHeight: -0.5
   maxHeight: 2.6
-  minSpawn: 0.4
   gameManager: {fileID: 658173340}
-  k: 2.25
+  k: 1
 --- !u!1 &1533887739
 GameObject:
   m_ObjectHideFlags: 0

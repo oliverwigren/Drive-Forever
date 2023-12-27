@@ -12,30 +12,30 @@ public class PatternScript : MonoBehaviour
 
     //bool editor;
 
-    public float speed = 10;
+    private const float speed = 7;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         Invoke("DestroyObject", 9);
 
-#if UNITY_EDITOR
-{
-            koefficient = 1;
-}
-#elif UNITY_STANDALONE_OSX
-{
-koefficient = 0.5f;
-}
-#elif UNITY_ANDROID
-{
-koefficient = 1;
-}
-#elif UNITY_IOS
-{
-koefficient = 0.5f;
-}
-#endif
+//#if UNITY_EDITOR
+//{
+//            koefficient = 1;
+//}
+//#elif UNITY_STANDALONE_OSX
+//{
+//koefficient = 0.5f;
+//}
+//#elif UNITY_ANDROID
+//{
+//koefficient = 1;
+//}
+//#elif UNITY_IOS
+//{
+//koefficient = 0.5f;
+//}
+//#endif
     }
 
     // Update is called once per frame
@@ -43,7 +43,7 @@ koefficient = 0.5f;
     {
         //rb.MovePosition(transform.position + endPosition.transform.position * Time.deltaTime * koefficient);
 
-        transform.Translate(Vector2.down * speed * Time.deltaTime * koefficient);
+        transform.Translate(Vector2.down * speed * Time.deltaTime /** koefficient*/);
     }
 
     void DestroyObject()
